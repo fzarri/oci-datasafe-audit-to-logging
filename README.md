@@ -7,7 +7,7 @@ Uses:
 * Data Safe Activity auditing
 * OCI Logging Custom Log
 * OCI Object Storage Bucket to manage lock and status (last DB audit event time colletected from Data Safe)
-* Resource principal Authentication for OCI API invocations (Data Safe O, Logging)
+* Resource principal Authentication for OCI API invocations (Data Safe, Object Storage, and Logging)
 * OCI Monitoring Alarm to call periodically OCI Function
 * Internal Semaphor with lock file in OCI Object Storage to permit to schedule every minutes and to manage cuncurrency with fn function timeout = 5 min 
 
