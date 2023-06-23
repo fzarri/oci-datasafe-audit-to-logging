@@ -135,6 +135,11 @@ variable "FunctionInvokeOCILoggingName" {
   default = "fn-datasafe-dbaudit"
 }
 
+variable "FunctionTimeoutSec" {
+  default = "300"
+}
+
+
 ###################################
 # Logging Variables
 ###################################
