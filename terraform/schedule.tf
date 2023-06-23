@@ -24,7 +24,7 @@ resource "oci_monitoring_alarm" "schedule_ds_ocilogging_alarm" {
     is_enabled = "true"
     metric_compartment_id =  var.compartment_ocid
     namespace = "oci_faas"
-    query = "FunctionInvocationCount[1d].count()"
+    query = "FunctionInvocationCount[1d].count() >= 0"
     severity = "INFO"
 
     #Optional
