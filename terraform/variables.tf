@@ -157,3 +157,7 @@ variable "LogDataSafeAuditDBNamePrefix" {
 variable "NotificationTopicNamePrefix" {
   default = "datasafe-dbaudit-notification_topic"
 }
+
+variable "AlarmNamePrefix" {
+  default = "datasafe-dbaudit-alarm-fn-schedule"
+}
