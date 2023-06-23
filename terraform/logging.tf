@@ -3,7 +3,7 @@
 
 resource "oci_logging_log_group" "log_group" {
   compartment_id = var.compartment_ocid
-  display_name   = "${var.LogGroupPrefix}"
+  display_name   = "${var.LogGroupPrefix}-${random_id.tag.hex}"
 }
 
 resource "oci_logging_log" "log_datadafe_auditdb" {
