@@ -12,10 +12,10 @@ resource "oci_identity_policy" "DataSafetoLoggingFunctionsPolicy" {
   description = "${var.PolicyDescription}"
   compartment_id = var.tenancy_ocid
   count = var.setup_policies ? 1 : 0
-  statements = ["Allow dynamic-group ${oci_identity_dynamic_group.DataSafetoLoggingFunctionsServiceDynamicGroup[0].name} to manage log-content in compartment id ${var.compartment_ocid}", 
-        "Allow dynamic-group ${oci_identity_dynamic_group.DataSafetoLoggingFunctionsServiceDynamicGroup[0].name} to manage objects in compartment id ${var.compartment_ocid}",
-        "Allow dynamic-group ${oci_identity_dynamic_group.DataSafetoLoggingFunctionsServiceDynamicGroup[0].name} to read objectstorage-namespaces in compartment id ${var.compartment_ocid}", 
-        "allow dynamic-group ${oci_identity_dynamic_group.DataSafetoLoggingFunctionsServiceDynamicGroup[0].name} to read buckets in compartment id ${var.compartment_ocid}",
+  statements = ["Allow dynamic-group ${oci_identity_dynamic_group.DataSafetoLoggingFunctionsServiceDynamicGroup[0].name} to manage log-content in compartment id ${var.compartment_ocid} where target.bucket.name='${oci_objectstorage_bucket.tracker-bucket.name}'", 
+        "Allow dynamic-group ${oci_identity_dynamic_group.DataSafetoLoggingFunctionsServiceDynamicGroup[0].name} to manage objects in compartment id ${var.compartment_ocid} where target.bucket.name='${oci_objectstorage_bucket.tracker-bucket.name}'",
+        "Allow dynamic-group ${oci_identity_dynamic_group.DataSafetoLoggingFunctionsServiceDynamicGroup[0].name} to read objectstorage-namespaces in compartment id ${var.compartment_ocid} where '${oci_objectstorage_bucket.tracker-bucket.name}'", 
+        "allow dynamic-group ${oci_identity_dynamic_group.DataSafetoLoggingFunctionsServiceDynamicGroup[0].name} to read buckets in compartment id ${var.compartment_ocid} where target.bucket.name='${oci_objectstorage_bucket.tracker-bucket.name}'",
         "Allow dynamic-group ${oci_identity_dynamic_group.DataSafetoLoggingFunctionsServiceDynamicGroup[0].name} to read data-safe-audit-events in tenancy"
         ]
 
