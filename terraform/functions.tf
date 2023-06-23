@@ -14,9 +14,9 @@ resource "oci_functions_function" "postauditlogs" {
   image          = "${local.ocir_docker_repository}/${local.namespace}/${var.ocir_repo_name}/${var.FunctionNamePrefix}:0.0.1"
   memory_in_mbs  = "${var.FunctionMemory}"
   config = {
-    "OCI_DATASAFE_COMPARTMENT_OCID" : "${var.datasafe_audit_compartment_id}"
-    "OCI_OS_TRACKER_BUCKET_NAME" : "${oci_objectstorage_bucket.tracker-bucket.name}",
-    "OCI_LOGGING_LOG_OCID" : "${oci_logging_log.log_on_fn_invoke.id}"
+    "ociDataSafeCompartmentOCID" : "${var.datasafe_audit_compartment_id}"
+    "ociOSTrackerBucketName" : "${oci_objectstorage_bucket.tracker-bucket.name}",
+    "ociLoggingLogOCID" : "${oci_logging_log.log_on_fn_invoke.id}"
   }
   
 }
