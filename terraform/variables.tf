@@ -19,9 +19,8 @@ variable "deployment_name" {
     default = "test"
 }
 
-variable "datasafe_audit_compartment_id" {
-    default = tenancy_ocid
-}
+variable "datasafe_audit_compartment_id" {}
+
 
 variable "release" {
   description = "Reference Data Safe DB Audit Log Exporter Release (OCI Logging)"
