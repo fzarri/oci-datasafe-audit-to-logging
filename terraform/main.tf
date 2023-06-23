@@ -3,7 +3,7 @@
 
 resource "null_resource" "Login2OCIR" {
   depends_on = [module.setup-network, oci_functions_application.DataSafeAuditDBtoLoggingApp,
-   oci_objectstorage_bucket.tracker-bucket, oci_identity_policy.DataSafetoLoggingFunctionsPolicy, oci_ons_subscription.test_subscription]
+   oci_objectstorage_bucket.tracker-bucket, oci_identity_policy.DataSafetoLoggingFunctionsPolicy, oci_ons_subscription.schedule_ds_ocilogging_notification_subscription]
  
 
   provisioner "local-exec" {
