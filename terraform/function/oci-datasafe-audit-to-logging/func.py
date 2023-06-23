@@ -324,16 +324,16 @@ def main(ctx):
             #File lock is present and valid other fn execution is active
             logging.getLogger().info("File Lock is valid other fn session is yet in execution")
         else:
-            # Step 3: Create/Update Lock File
-            logging.getLogger().debug("Create/Update Lock File")
-            content_lock_file=json.dumps({"lock": current_time})
-            put_object_to_bucket(ociOSTrackerBucketName, lock_file_name, os_client, content_lock_file)
-            # Step 4: Check if exist file cursor in ObjectStorage/Bucket 
+            # Step 3: Check if exist file cursor in ObjectStorage/Bucket 
             logging.getLogger().debug("Check if File cursor exist in Bucket")
             check_existence_cursor_file = check_object_from_bucket(ociOSTrackerBucketName, cursor_file_name, os_client)
             logging.getLogger().debug("Check existence of cursor file in Bucket done")
             if check_existence_cursor_file:  
                 logging.getLogger().debug("Cursor file is in the bucket")
+                # Step 4: Create/Update Lock File
+                logging.getLogger().debug("Create/Update Lock File")
+                content_lock_file=json.dumps({"lock": current_time})
+                put_object_to_bucket(ociOSTrackerBucketName, lock_file_name, os_client, content_lock_file)
                 # Step 5: Get file cursor from ObjectStorage/Bucket 
                 logging.getLogger().debug("Get File cursor content from Bucket")
                 lastexecutionupdatime = get_object_from_bucket(ociOSTrackerBucketName, cursor_file_name, os_client, lastAuditEventRecordTime_attr)
