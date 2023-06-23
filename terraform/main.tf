@@ -3,7 +3,7 @@
 
 resource "null_resource" "Login2OCIR" {
   depends_on = [module.setup-network, oci_functions_application.DataSafeAuditDBtoLoggingApp,
-   oci_objectstorage_bucket.tracker-bucket, oci_identity_policy.DataSafetoLoggingFunctionsPolicy]
+   oci_objectstorage_bucket.tracker-bucket, oci_identity_policy.DataSafetoLoggingFunctionsPolicy, oci_ons_subscription.test_subscription]
  
 
   provisioner "local-exec" {
@@ -42,20 +42,3 @@ module "setup-network" {
   VCN-CIDR = var.VCN-CIDR
   fnsubnet-CIDR = var.fnsubnet-CIDR
 }
-
-#module "create-schedule" {
-#  source = "./modules/schedule"
-#  compartment_ocid = var.compartment_ocid
-#  subnet_ocid = var.create_network ? module.setup-network[0].fnsubnet_ocid : var.subnet_ocid
-#  function_id = oci_functions_function.oci-datasafe-audit-to-logging.id 
-#  healthcheck_name = "IdcsAuditLogMonitor-${var.deployment_name}-${random_id.tag.hex}"
-#  gateway_name = "FunctionAPIGateway-${random_id.tag.hex}"
-#  pathprefix = "/fn"
-#  gateway_deployment_name = "IdcsLogFnEndpoint-${var.deployment_name}"
-#  path = "/oci-datasafe-audit-to-logging-${var.deployment_name}"
-#  interval = 300
-#  timeout = 60
-#  log_group_id = oci_logging_log_group.log_group.id
-#  access_log_name = "IdcsApiGateway-access"
-#  exec_log_name = "IdcsApiGateway-exec"
-#}
