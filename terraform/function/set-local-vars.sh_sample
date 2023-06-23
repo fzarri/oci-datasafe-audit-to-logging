@@ -5,5 +5,5 @@
 
 export OCI_DATASAFE_COMPARTMENT_OCID="ocid1.compartment.oc1..xxxxxx"
 export OCI_LOGGING_LOG_OCID="ocid1.log.oc1.eu-frankfurt-1.xxxxx"
-export OCI_OS_BUCKET_NAME="bucketname"
+export OCI_OS_TRACKER_BUCKET_NAME="bucketname"
 export FN_APP_NAME="oci-datasafe-audit-to-logging"

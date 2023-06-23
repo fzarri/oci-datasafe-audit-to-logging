@@ -1,0 +1,16 @@
+# Required for the OCI Provider
+tenancy_ocid="<tenancy_ocid>"
+compartment_ocid="<compartment_ocid>"
+user_ocid="<user_ocid>"
+fingerprint="<fingerprint>"
+private_key_path="<key_path>"
+
+ocir_user_name="<user_name>"
+ocir_user_password="<auth_token>"
+
+datasafe_audit_compartment_id="<Compartment OCID>"
+
+region="us-phoenix-1"
+
+# Deployment name is used in resource names
+deployment_name="test"

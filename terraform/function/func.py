@@ -295,9 +295,9 @@ def main(ctx):
         logging.getLogger().debug(
             "OCI Logging OCID: " + ociLoggingLogOCID
         )
-        ociOSBucketName = cfg["ociOSBucketName"]
+        ociOSTrackerBucketName = cfg["ociOSTrackerBucketName"]
         logging.getLogger().debug(
-            "OCI OS BucketName: " + ociOSBucketName
+            "OCI OS BucketName: " + ociOSTrackerBucketName
         )
         
         #Calculate fn timeout configured for manage validity of lock file
@@ -319,7 +319,7 @@ def main(ctx):
         logging.getLogger().debug("ObjectStorage/Bucket client obtained with Instance Principal")
         # Step 2: Check file lock in ObjectStorage/Bucket 
         logging.getLogger().debug("Manage file lock in Bucket")
-        check_file_lock = check_file_lock_bucket(ociOSBucketName, lock_file_name, os_client, fntimeout, current_time_t)
+        check_file_lock = check_file_lock_bucket(ociOSTrackerBucketName, lock_file_name, os_client, fntimeout, current_time_t)
         if check_file_lock:
             #File lock is present and valid other fn execution is active
             logging.getLogger().info("File Lock is valid other fn session is yet in execution")
@@ -327,16 +327,16 @@ def main(ctx):
             # Step 3: Create/Update Lock File
             logging.getLogger().debug("Create/Update Lock File")
             content_lock_file=json.dumps({"lock": current_time})
-            put_object_to_bucket(ociOSBucketName, lock_file_name, os_client, content_lock_file)
+            put_object_to_bucket(ociOSTrackerBucketName, lock_file_name, os_client, content_lock_file)
             # Step 4: Check if exist file cursor in ObjectStorage/Bucket 
             logging.getLogger().debug("Check if File cursor exist in Bucket")
-            check_existence_cursor_file = check_object_from_bucket(ociOSBucketName, cursor_file_name, os_client)
+            check_existence_cursor_file = check_object_from_bucket(ociOSTrackerBucketName, cursor_file_name, os_client)
             logging.getLogger().debug("Check existence of cursor file in Bucket done")
             if check_existence_cursor_file:  
                 logging.getLogger().debug("Cursor file is in the bucket")
                 # Step 5: Get file cursor from ObjectStorage/Bucket 
                 logging.getLogger().debug("Get File cursor content from Bucket")
-                lastexecutionupdatime = get_object_from_bucket(ociOSBucketName, cursor_file_name, os_client, lastAuditEventRecordTime_attr)
+                lastexecutionupdatime = get_object_from_bucket(ociOSTrackerBucketName, cursor_file_name, os_client, lastAuditEventRecordTime_attr)
                 logging.getLogger().debug("Content from file cursor lasteventexecutiontime: " + lastexecutionupdatime)
                 logging.getLogger().debug("Content from file cursor done") 
                 # Step 6: Initializing DataSafe Client
@@ -366,16 +366,16 @@ def main(ctx):
                     logging.getLogger().debug("Put Last Time Collect DB Audit Events in cursor file in OCI ObjectStorage/Bucket")
                     new_lastdbauditeventcolletcted = last_collected_time(lastdbauditeventcolletcted)
                     content_cursor_file_time=json.dumps({lastAuditEventRecordTime_attr: new_lastdbauditeventcolletcted})
-                    put_object_to_bucket(ociOSBucketName, cursor_file_name, os_client, content_cursor_file_time)
+                    put_object_to_bucket(ociOSTrackerBucketName, cursor_file_name, os_client, content_cursor_file_time)
                     logging.getLogger().debug("End Last Time Collect DB Audit Events in cursor file in OCI ObjectStorage/Bucket")
                     logging.getLogger().debug("End Last Time Collect DB Audit Events in cursor file in OCI ObjectStorage/Bucket")
                 # Step 13: Delete lock file in Bucket
                 logging.getLogger().debug("Delete lock filein OCI ObjectStorage/Bucket")
-                delete_object_from_bucket(ociOSBucketName, lock_file_name, os_client)
+                delete_object_from_bucket(ociOSTrackerBucketName, lock_file_name, os_client)
             else:
                 logging.getLogger().debug("Cursor file is not in the bucket, initialize cursor file")
                 content_cursor_file=json.dumps({lastAuditEventRecordTime_attr: current_time})
-                put_object_to_bucket(ociOSBucketName, cursor_file_name, os_client, content_cursor_file)
+                put_object_to_bucket(ociOSTrackerBucketName, cursor_file_name, os_client, content_cursor_file)
     
     except Exception as e:
         logging.getLogger().error("Failed main function: %s", e)
