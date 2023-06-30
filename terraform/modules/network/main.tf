@@ -78,7 +78,7 @@ resource "oci_core_route_table" "rt_fn_subnet" {
     description = "${var.fnvcnroutingtabledescriptionnatgw}-${random_id.tag.hex}"
   }
   route_rules {
-    destination       = lookup(data.oci_core_services.service_gateway_all_oci_services.services[0], "id")
+    destination       = lookup(data.oci_core_services.service_gateway_all_oci_services.services[0], "cidr_block")
     destination_type  = "SERVICE_CIDR_BLOCK"
     network_entity_id = oci_core_service_gateway.service_gw.id
     description = "${var.fnvcnroutingtabledescriptionervicegw}-${random_id.tag.hex}"
