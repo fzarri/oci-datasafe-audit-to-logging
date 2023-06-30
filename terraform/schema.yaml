@@ -147,13 +147,6 @@ variables:
 
   # Optional Configuration
 
-  log_source:
-    type: string
-    required: true
-    visibile: true
-    title: "Logging Service Log Group"
-    description: "Logging Service Log Group"
-
   VCN-CIDR:
     type: string
     required: false
@@ -176,5 +169,115 @@ variables:
     default: "datasafe-to-ocilogging-collector-bucket"
     title: "Tracker Bucket Name"
     description: "Choose Bucket Name for storing tracker file."
+
+  fnvcndnslabelprefix:
+    type: string
+    required: false
+    visibile: false
+  
+  fnvcnnameprefix:
+    type: string
+    required: false
+    visibile: false
+
+  fnvcnnameroutingtableprefix:
+    type: string
+    required: false
+    visibile: true
+
+  fnvcnroutingtabledescriptionervicegw:
+    type: string
+    required: false
+    visibile: false
+  
+  fnvcnnamedhcpopitonsprefix:
+    type: string
+    required: false
+    visibile: false
+
+  fnsubnetnameprefix:
+    type: string
+    required: false
+    visibile: false
+
+  fnsubnetdnslabelprefix:
+    type: string
+    required: false
+    visibile: false
+
+  fnvcnnamesecuritylistprefix:
+    type: string
+    required: false
+    visibile: false
+
+  fnvcnnameservicegatewayprefix:
+    type: string
+    required: false
+    visibile: false
+
+  PolicyNamePrefix:
+    type: string
+    required: false
+    visibile: false
+  
+  PolicyDescription:
+    type: string
+    required: false
+    visibile: false
+
+  DynamicGroupNamePrefix:
+    type: string
+    required: false
+    visibile: false
+
+  DynamicGroupDescription:
+    type: string
+    required: false
+    visibile: false
+
+  FunctionAppNamePrefix:
+    type: string
+    required: false
+    visibile: false
+
+  FunctionNamePrefix:
+    type: string
+    required: false
+    visibile: false
+
+  FunctionMemory:
+    type: string
+    required: false
+    visibile: false
+  
+  FunctionInvokeOCILoggingName:
+    type: string
+    required: false
+    visibile: true
+
+  FunctionTimeoutSec:
+    type: string
+    required: false
+    visibile: false
+
+  LogGroupPrefix:
+    type: string
+    required: false
+    visibile: false
+
+  LogDataSafeAuditDBNamePrefix:
+    type: string
+    required: false
+    visibile: false
+ 
+  NotificationTopicNamePrefix:
+    type: string
+    required: false
+    visibile: false
+
+  AlarmNamePrefix:
+    type: string
+    required: false
+    visibile: false
 
 outputs:
