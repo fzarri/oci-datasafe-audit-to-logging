@@ -59,20 +59,12 @@ variable "fnvcnnameprefix" {
   description = "The prefix display name of VCN"
 }
 
-variable "fnvcnnamenatgatewayprefix" {
-  default = "function_ds_log_vcn_ng"
-}
-
 variable "fnvcnnameroutingtableprefix" {
-  default = "function_ds_log_vcn_routetable_ng"
+  default = "function_ds_log_vcn_routetable"
 }
 
 variable "fnvcnroutingtabledescriptionervicegw" {
   default = "Route for Service Gateway"
-}
-
-variable "fnvcnroutingtabledescriptionnatgw" {
-  default = "Route for Nat Gateway"
 }
 
 variable "fnvcnnamedhcpopitonsprefix" {

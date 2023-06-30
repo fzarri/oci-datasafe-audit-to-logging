@@ -87,6 +87,7 @@ variable "create_network" {
 }
 variable "VCN-CIDR" {
   default = "10.0.0.0/22"
+  description = "The CIDR block of VCN"
 }
 
 variable "fnsubnet-CIDR" {
@@ -99,22 +100,15 @@ variable "fnvcndnslabelprefix" {
 
 variable "fnvcnnameprefix" {
   default = "vcn_fn_ds_log-fndslog"
-}
-
-variable "fnvcnnamenatgatewayprefix" {
-  default = "function_ds_log_vcn_ng"
+  description = "The prefix display name of VCN"
 }
 
 variable "fnvcnnameroutingtableprefix" {
-  default = "function_ds_log_vcn_routetable_ng"
+  default = "function_ds_log_vcn_routetable"
 }
 
 variable "fnvcnroutingtabledescriptionervicegw" {
   default = "Route for Service Gateway"
-}
-
-variable "fnvcnroutingtabledescriptionnatgw" {
-  default = "Route for Nat Gateway"
 }
 
 variable "fnvcnnamedhcpopitonsprefix" {
@@ -132,7 +126,6 @@ variable "fnsubnetdnslabelprefix" {
 variable "fnvcnnamesecuritylistprefix" {
   default = "functions-security-list"
 }
-
 variable "fnvcnnameservicegatewayprefix" {
   default = "function_ds_log_vcn_sg"
 }
