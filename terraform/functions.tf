@@ -50,7 +50,7 @@ resource "oci_functions_function" "postauditlogs" {
   memory_in_mbs  = "${var.FunctionMemory}"
   timeout_in_seconds = "${var.FunctionTimeoutSec}"
   config = {
-    "ociDataSafeCompartmentOCID" : "${var.var.tenancy_ocid}"
+    "ociDataSafeCompartmentOCID" : "${var.tenancy_ocid}"
     "ociOSTrackerBucketName" : "${oci_objectstorage_bucket.tracker-bucket.name}",
     "ociLoggingLogOCID" : "${oci_logging_log.log_datadafe_auditdb.id}"
   }
