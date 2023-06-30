@@ -65,8 +65,7 @@ resource "oci_core_service_gateway" "service_gw" {
         service_id = lookup(data.oci_core_services.service_gateway_all_oci_services.services[0], "id")
   }
   display_name = "${var.fnvcnnameservicegatewayprefix}-${random_id.tag.hex}"
-  
-  count = var.create_service_gateway == true ? 1 : 0
+  count = 1
 }
 
 resource "oci_core_route_table" "rt_fn_subnet" {
