@@ -67,7 +67,11 @@ variable "fnvcnnameroutingtableprefix" {
   default = "function_ds_log_vcn_routetable_ng"
 }
 
-variable "fnvcnroutingtabledescription" {
+variable "fnvcnroutingtabledescriptionervicegw" {
+  default = "Route for Service Gateway"
+}
+
+variable "fnvcnroutingtabledescriptionnatgw" {
   default = "Route for Nat Gateway"
 }
 
