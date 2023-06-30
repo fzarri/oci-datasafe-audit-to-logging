@@ -64,7 +64,7 @@ resource "oci_core_service_gateway" "service_gw" {
   services {
         service_id = lookup(data.oci_core_services.service_gateway_all_oci_services.services[0], "id")
   }
-  display_name = var.service_gateway_display_name
+  display_name = "${var.fnvcnnameservicegatewayprefix}-${random_id.tag.hex}"
   
   count = var.create_service_gateway == true ? 1 : 0
 }

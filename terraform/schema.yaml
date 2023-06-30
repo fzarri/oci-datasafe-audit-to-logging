@@ -144,12 +144,6 @@ variables:
     title: "OCIR user password"
     description: "Oracle Cloud Infrastructure Registry user password (your OCI user authtoken)." 
 
-  datasafe_audit_compartment_id:
-    type: string
-    required: true
-    visibile: true
-    title: "Data Safe Compartment OCID"
-    description: "Compartment OCID for Data Safe to fetch DB Audit Events."
 
   # Optional Configuration
 

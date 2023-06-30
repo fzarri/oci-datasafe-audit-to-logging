@@ -86,3 +86,6 @@ variable "fnsubnetdnslabelprefix" {
 variable "fnvcnnamesecuritylistprefix" {
   default = "functions-security-list"
 }
+variable "fnvcnnameservicegatewayprefix" {
+  default = "function_ds_log_vcn_sg"
+}

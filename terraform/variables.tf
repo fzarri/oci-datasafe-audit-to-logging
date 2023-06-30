@@ -54,8 +54,6 @@ variable "deployment_name" {
     default = "test"
 }
 
-variable "datasafe_audit_compartment_id" {}
-
 
 variable "release" {
   description = "Reference Data Safe DB Audit Log Exporter Release (OCI Logging)"
@@ -129,6 +127,10 @@ variable "fnsubnetdnslabelprefix" {
 
 variable "fnvcnnamesecuritylistprefix" {
   default = "functions-security-list"
+}
+
+variable "fnvcnnameservicegatewayprefix" {
+  default = "function_ds_log_vcn_sg"
 }
 
 
