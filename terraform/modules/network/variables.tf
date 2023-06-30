@@ -37,10 +37,13 @@
 ################################################################################
 
 
-variable "compartment_ocid" {}
+variable "compartment_ocid" {
+  description = "the OCID of the compartment where the environment will be created."
+}
 
 variable "VCN-CIDR" {
   default = "10.0.0.0/22"
+  description = "The CIDR block of VCN"
 }
 
 variable "fnsubnet-CIDR" {
@@ -53,6 +56,7 @@ variable "fnvcndnslabelprefix" {
 
 variable "fnvcnnameprefix" {
   default = "vcn_fn_ds_log-fndslog"
+  description = "The prefix display name of VCN"
 }
 
 variable "fnvcnnamenatgatewayprefix" {
