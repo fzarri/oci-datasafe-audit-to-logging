@@ -62,7 +62,7 @@ variableGroups:
   - deployment_name
   - create_network
   - show_advanced_collection
- # - variables.tf
+
 
 - title: Select	Network Subnet
   visible:
