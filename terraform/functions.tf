@@ -47,8 +47,8 @@ resource "oci_functions_function" "postauditlogs" {
   application_id = oci_functions_application.DataSafeAuditDBtoLoggingApp.id
   display_name   = "${var.FunctionNamePrefix}-${var.deployment_name}"
   image          = "${local.ocir_docker_repository}/${local.namespace}/${var.ocir_repo_name}/${var.FunctionNamePrefix}:0.0.1"
-  memory_in_mbs  = "${var.FunctionMemory}"
-  timeout_in_seconds = "${var.FunctionTimeoutSec}"
+  memory_in_mbs  =  var.FunctionMemory
+  timeout_in_seconds = var.FunctionTimeoutSec
   config = {
     "ociDataSafeCompartmentOCID" : "${var.tenancy_ocid}"
     "ociOSTrackerBucketName" : "${oci_objectstorage_bucket.tracker-bucket.name}",
