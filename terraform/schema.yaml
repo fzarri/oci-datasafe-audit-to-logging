@@ -59,8 +59,10 @@ variableGroups:
   variables:
   - ocir_user_name
   - ocir_user_password
+  - deployment_name
   - create_network
-  - show_advanced_collection 
+  - show_advanced_collection
+ # - variables.tf
 
 - title: Select	Network Subnet
   visible:
@@ -84,6 +86,7 @@ variableGroups:
         - show_advanced_collection
   variables:
   - tracker-bucket
+  - test
   - setup_policies
 
 
@@ -143,7 +146,13 @@ variables:
     visibile: true
     title: "OCIR user password"
     description: "Oracle Cloud Infrastructure Registry user password (your OCI user authtoken)." 
-
+  
+  deployment_name:
+    type: string
+    required: true
+    visibile: true
+    title: "Deployement Mode"
+    description: "Function Deployment Mod (Prod, Test, Dev)" 
 
   # Optional Configuration
 
@@ -169,115 +178,3 @@ variables:
     default: "datasafe-to-ocilogging-collector-bucket"
     title: "Tracker Bucket Name"
     description: "Choose Bucket Name for storing tracker file."
-
-  fnvcndnslabelprefix:
-    type: string
-    required: false
-    visibile: false
-  
-  fnvcnnameprefix:
-    type: string
-    required: false
-    visibile: false
-
-  fnvcnnameroutingtableprefix:
-    type: string
-    required: false
-    visibile: true
-
-  fnvcnroutingtabledescriptionervicegw:
-    type: string
-    required: false
-    visibile: false
-  
-  fnvcnnamedhcpopitonsprefix:
-    type: string
-    required: false
-    visibile: false
-
-  fnsubnetnameprefix:
-    type: string
-    required: false
-    visibile: false
-
-  fnsubnetdnslabelprefix:
-    type: string
-    required: false
-    visibile: false
-
-  fnvcnnamesecuritylistprefix:
-    type: string
-    required: false
-    visibile: false
-
-  fnvcnnameservicegatewayprefix:
-    type: string
-    required: false
-    visibile: false
-
-  PolicyNamePrefix:
-    type: string
-    required: false
-    visibile: false
-  
-  PolicyDescription:
-    type: string
-    required: false
-    visibile: false
-
-  DynamicGroupNamePrefix:
-    type: string
-    required: false
-    visibile: false
-
-  DynamicGroupDescription:
-    type: string
-    required: false
-    visibile: false
-
-  FunctionAppNamePrefix:
-    type: string
-    required: false
-    visibile: false
-
-  FunctionNamePrefix:
-    type: string
-    required: false
-    visibile: false
-
-  FunctionMemory:
-    type: string
-    required: false
-    visibile: false
-  
-  FunctionInvokeOCILoggingName:
-    type: string
-    required: false
-    visibile: true
-
-  FunctionTimeoutSec:
-    type: string
-    required: false
-    visibile: false
-
-  LogGroupPrefix:
-    type: string
-    required: false
-    visibile: false
-
-  LogDataSafeAuditDBNamePrefix:
-    type: string
-    required: false
-    visibile: false
- 
-  NotificationTopicNamePrefix:
-    type: string
-    required: false
-    visibile: false
-
-  AlarmNamePrefix:
-    type: string
-    required: false
-    visibile: false
-
-outputs:
