@@ -39,11 +39,17 @@
 variable "tenancy_ocid" {}
 
 #comment for stack zip file
-variable "user_ocid" {}
+variable "user_ocid" {
+  default =""
+}
 #comment for stack zip file
-variable "fingerprint" {} 
+variable "fingerprint" {
+  default =""
+}
 #comment for stack zip file
-variable "private_key_path" {}
+variable "private_key_path" {
+  default =""
+}
 
 variable "compartment_ocid" {}
 variable "region" {}
