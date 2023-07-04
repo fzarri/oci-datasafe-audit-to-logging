@@ -38,7 +38,7 @@
 
 resource "null_resource" "Login2OCIR" {
   depends_on = [module.setup-network, oci_functions_application.DataSafeAuditDBtoLoggingApp,
-   oci_objectstorage_bucket.tracker-bucket, oci_identity_policy.DataSafetoLoggingFunctionsPolicy]
+   oci_objectstorage_bucket.tracker-bucket, oci_identity_policy.DataSafetoLoggingFunctionsPolicy, oci_artifacts_container_repository.fn_container_repository]
  
 
   provisioner "local-exec" {
