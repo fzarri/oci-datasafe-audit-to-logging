@@ -65,7 +65,7 @@ resource "null_resource" "DataSafeAuditDBtoLoggingPush2OCIR" {
  }
 
   provisioner "local-exec" {
-    command     = "docker push ${local.ocir_docker_repository}/${local.namespace}/${var.ocir_repo_name}/oci-datasafe-audit-to-logging:0.0.1"
+    command     = "docker push ${local.ocir_docker_repository}/${local.namespace}/${oci_artifacts_container_repository.fn_container_repository.display_name}/oci-datasafe-audit-to-logging:0.0.1"
     working_dir = "function/oci-datasafe-audit-to-logging"
  }
 }
