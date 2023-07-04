@@ -5,16 +5,20 @@ Oracle Data Safe delivers essential security services for Oracle Autonomous Data
 
 Oracle Functions is a serverless, highly scalable, fully managed Functions-as-a-Service platform built on Oracle Cloud Infrastructure and powered by the open-source Fn Project engine. Developers can use Oracle Functions to write and deploy code that delivers business value without worrying about provisioning or managing the underlying infrastructure. Oracle Functions is container-native, with functions packaged as Docker container images.
 
-This Reference Architecture describes OCI Logging based solution for collecting Oracle Datasafe DB Audit Logs for continuous monitoring and troubleshooting. An OCI Function pulls audit logs from Data Safe REST API Endpoints regularly and ingest them in OCI Logging. 
-From OCI Logging Data Safe DB Audit Logs, can be send to OCI Logging Analytics, external SIEM and OCI Object Storage 
+This Reference Architecture describes OCI Logging based solution for collecting Oracle Datasafe Oracle DB Audit Logs for continuous monitoring and troubleshooting. An OCI Function pulls audit logs from Data Safe REST API Endpoints regularly and ingest them in OCI Logging. 
+From OCI Logging Data Safe DB Audit Logs, can be send to OCI Logging Analytics, external SIEM and OCI Object Storage. See [Design Guidance for SIEM Integration](https://docs.oracle.com/en-us/iaas/Content/cloud-adoption-framework/siem-integration.htm)
 
 ## Prerequisites
 
-- Configure Data Safe to get DB Audit Events from Oracle DataBase.
+- Configure Data Safe to get DB Audit Events from Oracle Data Base.
 
-- Permission to `manage` the following types of resources in your Oracle Cloud Infrastructure tenancy: `vcns`, `vpn-gateways`, `route-tables`, `security-lists`, `subnets`, `functionss`, `Monitor Alarms`, and `Notifications`.
+- Configure OCI Registry username (your OCI username) and OCI Registry user password (your OCI user authtoken), See [Generating an Auth Token to Enable Login to Oracle Cloud Infrastructure Registry](https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsgenerateauthtokens.htm)
 
-- Quota to create the following resources: 1 VCN, 1 subnets, 1 VPN Gateway, 1 route rules, 1 function, 1 dynamic group, 1 policy, 1 Monitor Alarm, and 1 Notification Subscription.
+- Create and/or Check IAM Policies to permit Oracle Cloud Infrastructure Registry username to push function image in OCI Registry. See [Policies to Control Repository Access](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registrypolicyrepoaccess.htm)
+
+- Permission to `manage` the following types of resources in your Oracle Cloud Infrastructure tenancy: `IAM policies`, `vcns`, `services-gateways`, `route-tables`, `security-lists`, `subnets`, `functions`, `Monitor Alarms`, and `Notifications`.
+
+- Quota to create the following resources: 1 VCN, 1 subnets, 1 Service Gateway, 1 route rules, 1 function, 1 dynamic group, 1 policy in root compartment, 1 Monitor Alarm, and 1 Notification Subscription.
 
 If you don't have the required permissions and quota, contact your tenancy administrator. See [Policy Reference](https://docs.cloud.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm), [Service Limits](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm), [Compartment Quotas](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcequotas.htm).
 
