@@ -10,7 +10,7 @@ From OCI Logging Data Safe DB Audit Logs, can be send to OCI Logging Analytics, 
 
 ## Prerequisites
 
-- Configure Data Safe to get DB Audit Events from Oracle Data Base.
+- Configure Data Safe to get DB Audit Events from Oracle DataBase.
 
 - Configure OCI Registry username (your OCI username) and OCI Registry user password (your OCI user authtoken), See [Generating an Auth Token to Enable Login to Oracle Cloud Infrastructure Registry](https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsgenerateauthtokens.htm)
 
@@ -68,10 +68,20 @@ exit
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 exit
 ```
-  
+
+OR
+
+you'll use [Oracle Linux Cloud Developer Image](https://docs.oracle.com/en-us/iaas/oracle-linux/developer/index.htm). The Oracle Linux Cloud Developer image provides the latest development tools, languages, and Oracle Cloud Infrastructure Software Development Kits (SDKs) to rapidly deploy, that include Podman instead of Docker.
+The Oracle Linux Cloud Developer image don't include Fn Project but it easy to setup:
+... 
+curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
+
+Also, please follow this [note] (https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsinstalldocker.htm#Install_Docker_for_Use_with_Oracle_Functions__section_podman_instead_of_docker). By default, Fn Project (and by extension, OCI Functions) assumes the use of Docker to build and deploy function images. However, Fn Project also supports Podman as an alternative to Docker. When using Fn Project CLI version 0.6.12 and above, you can set a configuration setting to specify that you want to use Podman instead of Docker.
+
+
 ### Set Up and Configure Terraform
 
-1. Complete the prerequisites described [here](https://github.com/cloud-partners/oci-prerequisites).
+1. Complete the prerequisites described [here](https://github.com/cloud-partners/oci-prerequisites).   
 
 2. Create a `terraform.tfvars` file, and specify the following variables:
 
@@ -88,14 +98,12 @@ region = "<oci_region>"
 # Compartment
 compartment_ocid = "<compartment_ocid>"
 
-# Data Safe info
-datasafe_audit_compartment_id="ocid1.compartment.oc1..xxxxx"  <- Data Safe Compartment from get logs, could be tenant OCID compartment
-
 # OCIR
-ocir_user_name         = "<ocir_user_name>"
-ocir_user_password     = "<ocir_user_password>"
+ocir_user_name         = "<ocir_user_name>"  <- OCI Registry username (your OCI username)
+ocir_user_password     = "<ocir_user_password>" <- OCI Registry user password (your OCI user authtoken)
 
-#
+# Deployment name is used in resource names
+deployment_name="test"
 
 ### Create the Resources
 Run the following commands:
