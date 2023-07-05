@@ -73,8 +73,10 @@ OR
 
 you'll use [Oracle Linux Cloud Developer Image](https://docs.oracle.com/en-us/iaas/oracle-linux/developer/index.htm). The Oracle Linux Cloud Developer image provides the latest development tools, languages, and Oracle Cloud Infrastructure Software Development Kits (SDKs) to rapidly deploy, that include Podman instead of Docker.
 The Oracle Linux Cloud Developer image don't include Fn Project but it easy to setup:
-... 
+
+```
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
+```
 
 Also, please follow this [note] (https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsinstalldocker.htm#Install_Docker_for_Use_with_Oracle_Functions__section_podman_instead_of_docker). By default, Fn Project (and by extension, OCI Functions) assumes the use of Docker to build and deploy function images. However, Fn Project also supports Podman as an alternative to Docker. When using Fn Project CLI version 0.6.12 and above, you can set a configuration setting to specify that you want to use Podman instead of Docker.
 
@@ -105,6 +107,8 @@ ocir_user_password     = "<ocir_user_password>" <- OCI Registry user password (y
 # Deployment name is used in resource names
 deployment_name="test"
 
+```
+
 ### Create the Resources
 Run the following commands:
 
@@ -115,9 +119,6 @@ Run the following commands:
 ### Test the stack 
 
 You can test the stack by login/logout in the DB already integrated with Data Safe that generates DB audit log. The function will load the logs in 1 minutes and you can see it in Logging Console.
-
-```
-Outputs:
 
 
 ### Destroy the Deployment
