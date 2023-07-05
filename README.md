@@ -129,4 +129,5 @@ When you no longer need the deployment, you can run this command to destroy the 
 If there is error in destroying the object storage bucket, manually delete the bucket and run "terraform destroy" again.
 
 ### Architecture Diagram
+![](./images/DatasafetoOCILoggingArchitecture.jpeg)
 
