@@ -38,9 +38,9 @@ If you don't have the required permissions and quota, contact your tenancy admin
 
 7. Wait for the job to be completed, and review the plan.
 
-    To make any changes, return to the Stack Details page, click **Edit Stack**, and make the required changes. Then, run the **Plan** action again.
+8. To make any changes, return to the Stack Details page, click **Edit Stack**, and make the required changes. Then, run the **Plan** action again.
 
-8. If no further changes are necessary, return to the Stack Details page, click **Terraform Actions**, and select **Apply**.
+9. If no further changes are necessary, return to the Stack Details page, click **Terraform Actions**, and select **Apply**.
 
 ## Deploy Using the Terraform CLI
 
